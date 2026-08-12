@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Koikatsu Sunshine (KKS) edition of Soma Dynamics. This repository
+       builds only the KKS flavor; the Koikatu (KK) flavor lives in
+       https://github.com/DevoLutioner/SomaDynamics. net471 matches the
+       Unity 2018.4 / netstandard 2.0 assemblies of Koikatsu Sunshine. -->
+  <PropertyGroup>
+    <AssemblyName>ThighPhysicsController</AssemblyName>
+    <TargetFramework>net471</TargetFramework>
+    <LangVersion>11.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GameRoot Condition="'$(KKS_BUILD_GAME_ROOT)' != ''">$(KKS_BUILD_GAME_ROOT)</GameRoot>
+    <GameRoot Condition="'$(GameRoot)' == ''">H:\KKS\KKS</GameRoot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameRoot)\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameRoot)\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="KKSAPI">
+      <HintPath>$(GameRoot)\BepInEx\plugins\KKSAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="KKS_ExtensibleSaveFormat">
+      <HintPath>$(GameRoot)\BepInEx\plugins\KKS_BepisPlugins\KKS_ExtensibleSaveFormat.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <!-- KKS splits UnityEngine into modules; add the ones the plugin uses. -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRoot)\KoikatsuSunshine_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

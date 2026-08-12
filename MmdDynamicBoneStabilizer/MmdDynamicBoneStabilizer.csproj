@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Koikatsu Sunshine (KKS) edition. This repository builds only the KKS
+       flavor; the Koikatu (KK) flavor lives in
+       https://github.com/DevoLutioner/MmdDynamicBoneStabilizer.
+       net48 matches the .NET 4.8 target of the KKS CharaAnime assembly. -->
+  <PropertyGroup>
+    <LangVersion>7.3</LangVersion>
+    <AssemblyName>MmdDynamicBoneStabilizer</AssemblyName>
+    <RootNamespace>MmdDynamicBoneStabilizer</RootNamespace>
+    <Version>1.2.2</Version>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Deterministic>true</Deterministic>
+    <Nullable>disable</Nullable>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GameRoot Condition="'$(KKS_BUILD_GAME_ROOT)' != ''">$(KKS_BUILD_GAME_ROOT)</GameRoot>
+    <GameRoot Condition="'$(GameRoot)' == ''">H:\KKS\KKS</GameRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="release/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameRoot)\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameRoot)\BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="CharaAnime">
+      <HintPath>$(GameRoot)\BepInEx\plugins\CharaAnime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- KKS splits UnityEngine into modules; add the ones the plugin uses. -->
+  <ItemGroup>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>$(GameRoot)\CharaStudio_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

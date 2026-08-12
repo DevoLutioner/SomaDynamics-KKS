@@ -1,0 +1,9 @@
+bin/
+obj/
+release/
+packaging/
+artifacts/
+backups/
+*.pdb
+.vs/
+*.user
