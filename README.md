@@ -5,14 +5,14 @@ Koikatsu Sunshine（KKS）专用插件合集，与 Koikatu（KK）版同名插�
 
 | 目录 | 插件 | KK 版仓库 |
 | --- | --- | --- |
-| [`SomaDynamics/`](SomaDynamics/) | Soma Dynamics v1.0.3.5（形体动力学控制器，ThighPhysicsController 的 KKS 版） | [DevoLutioner/SomaDynamics](https://github.com/DevoLutioner/SomaDynamics) |
+| [`SomaDynamics/`](SomaDynamics/) | Soma Dynamics v1.0.3.6（形体动力学控制器，ThighPhysicsController 的 KKS 版） | [DevoLutioner/SomaDynamics](https://github.com/DevoLutioner/SomaDynamics) |
 | [`MmdDynamicBoneStabilizer/`](MmdDynamicBoneStabilizer/) | MMD DynamicBone Stabilizer v1.2.2（MMD 头发/衣摆/饰品稳定器，KKS 版） | [DevoLutioner/MmdDynamicBoneStabilizer](https://github.com/DevoLutioner/MmdDynamicBoneStabilizer) |
 
 ## 下载安装
 
 从 [Releases](../../releases) 下载对应 zip：
 
-- `SomaDynamics_KKS_1.0.3.5.zip`（附 `.sha256`）
+- `SomaDynamics_KKS_1.0.3.6.zip`（附 `.sha256`）
 - `MmdDynamicBoneStabilizer-KKS-v1.2.2.zip`（附 `.sha256`）
 
 将压缩包内的 `BepInEx` 合并到 KKS 游戏根目录（包含 `KoikatsuSunshine.exe` 与
@@ -29,7 +29,7 @@ Koikatsu Sunshine（KKS）专用插件合集，与 Koikatu（KK）版同名插�
 - `CharaStudio.exe`：Soma 场景钩子安装正常；MMD 稳定器加载正常，无缺失依赖错误。
 
 ```text
-Loading [Soma Dynamics 1.0.3.5]
+Loading [Soma Dynamics 1.0.3.6]
 Soma Dynamics initialized (...)
 Native breast and Studio pose-change patches installed.
 MMD DynamicBone Stabilizer v1.2.2 loaded (automatic, no tuning required).

@@ -1,4 +1,4 @@
-# Soma Dynamics｜形体动力学控制器 v1.0.3.5（KKS 版）
+# Soma Dynamics｜形体动力学控制器 v1.0.3.6（KKS 版）
 
 Soma Dynamics 的 Koikatsu Sunshine（KKS）专用版，统一管理大腿、手臂、腹部、胸部
 和臀部物理。界面以少量感知参数为主，同时保留逐骨高级调节。
@@ -11,7 +11,13 @@ Soma Dynamics 的 Koikatsu Sunshine（KKS）专用版，统一管理大腿、手
 内部 GUID、DLL、安装目录和角色卡数据键继续沿用 `ThighPhysicsController`，以兼容旧卡、
 配置和现有安装。
 
-## 1.0 至 1.0.3.5 修复总览
+## 1.0 至 1.0.3.6 修复总览
+
+### 1.0.3.6
+
+- PushUp 体型刷新前暂停大腿、手臂和腹部求解，等待体型连续稳定两帧后重采基准。
+- 延迟胸部/服装刷新只重套胸臀原生 DynamicBone，不再重套全身 `ApplyFlesh`。
+- 小腹 Chain 增加 `0.020 m` 基准漂移和 `0.045 m` 最终位移安全限幅，阻止面条腹部。
 
 | 版本 | 用户可见修复 |
 | --- | --- |
@@ -28,6 +34,7 @@ Soma Dynamics 的 Koikatsu Sunshine（KKS）专用版，统一管理大腿、手
 | 1.0.3.2 | 修复 1.0.3.1 自由H兜底检测每帧扫描全场景造成的严重掉帧；改为仅在场景加载/切换后扫描一次并缓存。 |
 | 1.0.3.3 | 内置高档精确采用 MyPreset1；兼容 PushUp 胸型重算，并在体型刷新后重建 Soma 基准，修复拖动滑条导致四肢/身体变形。 |
 | 1.0.3.4 | 修正 PushUp 协调：不再重采手臂/腹部，也不再用 setPtn 撤回胸型；只原位回写胸链物理字段。 |
+| 1.0.3.6 | PushUp 联动暂停/延迟重采与小腹双重安全限幅，修复肢体变形和面条腹部。 |
 | 1.0.3.5 | 按反编译的 BPC 提交流程补回胸链 ReSetup，并在 PushUp 写完整组胸型后只提交胸部基准。 |
 
 完整逐项记录见 [`CHANGELOG.md`](CHANGELOG.md)。
@@ -61,7 +68,7 @@ Soma Dynamics 的 Koikatsu Sunshine（KKS）专用版，统一管理大腿、手
 - 启动游戏或 Studio 后，日志应出现：
 
 ```text
-Loading [Soma Dynamics 1.0.3.5]
+Loading [Soma Dynamics 1.0.3.6]
 Soma Dynamics initialized (...)
 Native breast and Studio pose-change patches installed.
 ```
@@ -78,9 +85,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Build-ThighPhysicsCo
 `KKS_BUILD_GAME_ROOT` 覆盖。正式构建会运行参数模型测试、胸臀实时应用安全契约、
 品牌/UI 字符串烟测，并生成：
 
-- `packaging\SomaDynamics_KKS_1.0.3.5\`
-- `packaging\SomaDynamics_KKS_1.0.3.5.zip`
-- `packaging\SomaDynamics_KKS_1.0.3.5.zip.sha256`
+- `packaging\SomaDynamics_KKS_1.0.3.6\`
+- `packaging\SomaDynamics_KKS_1.0.3.6.zip`
+- `packaging\SomaDynamics_KKS_1.0.3.6.zip.sha256`
 
 ## 界面逻辑
 
@@ -166,7 +173,7 @@ BPC 开发术语。完成迁移后，不需要同时启用以下旧插件：
 
 ## 兼容与数据版本
 
-- 插件版本：`1.0.3.5`
+- 插件版本：`1.0.3.6`
 - 卡片数据版本：`61`
 - XML 版本：`4`
 - GUID：`codex.koikatumanager.thighphysicscontroller`
